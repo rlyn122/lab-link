@@ -18,5 +18,6 @@ allowing students to engage with current research rather than static summaries.
 
 #Link to Website
 
-#Project Proposal
+[#Project Proposal](https://github.com/rlyn122/lab-link/blob/main/docs/lablink_proposal_report.pdf)
+
 
