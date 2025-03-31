@@ -4,7 +4,7 @@
 - Emma Carrier
 - Alas Sezguin
 - Rhea Kansal
-- Maya Dattatreta
+- Maya Dattatreya
 
 #Project Description
 
