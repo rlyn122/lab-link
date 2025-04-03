@@ -2,7 +2,7 @@
 # Team Members
 - Ryan Lin
 - Emma Carrier
-- Alas Sezguin
+- Alas Ozen Sezgin
 - Rhea Kansal
 - Maya Dattatreya
 
