@@ -1,2 +1,0 @@
-processed_authors.txt
-processed_ids.txt
