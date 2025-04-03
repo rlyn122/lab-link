@@ -1,0 +1,8 @@
+- We might wanna preprocess the data (gemini or gpt can do this) to get topics, etc.
+- How do research topics change throughout time? This could be useful for students
+- How many collaborators? Precompile this information maybe and show those statistics, maybe students could find some insight out of that -- you can tell which university an authors/collaborator is coming from by looking at their email addresses, which will be given by google scholar
+- Bigger lab does NOT mean more undergraduates!!
+- Summarize professor, visualize
+- Try to find professors' CV, process it, work with that resource -- you could maybe find which undergrads they've worked with in the past as well. - You would have to go to the professors' website
+- Create an analytics page for all professors, structured website (static webpage) that shows the coherent information across all professors (pick out some features) and then you can use the info from the website (like RAG) to add feed into the model
+- Use RAG fs but this might not work if students ask for comparisons between professors, think about how to handle that
