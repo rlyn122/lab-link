@@ -13,7 +13,7 @@
         - `.env.local`: Set up environment variables (template)
         - `.gitignore`: Configure files to ignore
     - **Step Dependencies**: None
-    - **User Instructions**: Run `npx create-next-app@latest lab-link --typescript --tailwind --eslint` followed by `npm install @supabase/supabase-js drizzle-orm @google/generative-ai` and Shadcn UI setup with `npx shadcn-ui@latest init`
+
 - [ ] Step 2: Set up Supabase project
     
     - **Task**: Create a new Supabase project and configure environment variables
@@ -42,7 +42,7 @@
         - `components/ui`: Initialize Shadcn UI components
         - `lib/utils.ts`: Create utility functions
     - **Step Dependencies**: Step 1
-    - **User Instructions**: Run necessary Shadcn UI component installation commands as needed, e.g., `npx shadcn-ui@latest add button card input`
+    - **User Instructions**: Run necessary Shadcn UI component installation commands as needed, e.g., `npx shadcn@latest add button card input`
 
 ## Database & API Configuration
 
