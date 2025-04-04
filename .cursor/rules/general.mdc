@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Follow these rules for every request.
+
+- We are building a full stack app called lab-link.
+- Find the steps in [project-steps.md](mdc:my-app/project-steps.md)
+- work on whatever steps i tell you to work on and only work on those steps at once
+- once those steps are done, mark as completed
+- then stop, i will give you further instructions.
