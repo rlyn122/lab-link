@@ -2,7 +2,7 @@
 
 ## Project Setup & Configuration
 
-- [ ] Step 1: Initialize Next.js project with required dependencies
+- [x] Step 1: Initialize Next.js project with required dependencies
     
     - **Task**: Create a new Next.js project with TypeScript, Tailwind CSS, and install necessary dependencies including Supabase client, Drizzle ORM, Shadcn UI, and Google Gemini SDK
     - **Files**:
@@ -14,7 +14,7 @@
         - `.gitignore`: Configure files to ignore
     - **Step Dependencies**: None
 
-- [ ] Step 2: Set up Supabase project
+- [x] Step 2: Set up Supabase project
     
     - **Task**: Create a new Supabase project and configure environment variables
     - **Files**:
@@ -42,7 +42,7 @@
         - `components/ui`: Initialize Shadcn UI components
         - `lib/utils.ts`: Create utility functions
     - **Step Dependencies**: Step 1
-    - **User Instructions**: Run necessary Shadcn UI component installation commands as needed, e.g., `npx shadcn@latest add button card input`
+    - **User Instructions**: Run necessary Shadcn UI component installation commands as needed, e.g., `npx shadcn-ui@latest add button card input`
 
 ## Database & API Configuration
 
