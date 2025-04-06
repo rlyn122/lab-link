@@ -33,7 +33,7 @@
             ```
             
         4. Obtain a Gemini API key from Google AI Studio (https://makersuite.google.com)
-- [ ] Step 3: Configure application theming and layout
+- [x] Step 3: Configure application theming and layout
     
     - **Task**: Set up the basic application theme, layout, and Shadcn UI components
     - **Files**:
@@ -46,7 +46,7 @@
 
 ## Database & API Configuration
 
-- [ ] Step 4: Define database schema with Drizzle
+- [x] Step 4: Define database schema with Drizzle
     
     - **Task**: Create database schema for faculty, research papers, and research areas
     - **Files**:
@@ -55,7 +55,7 @@
         - `drizzle.config.ts`: Configure Drizzle
     - **Step Dependencies**: Steps 1, 2
     - **User Instructions**: None
-- [ ] Step 5: Create database migration and push schema
+- [x] Step 5: Create database migration and push schema
     
     - **Task**: Generate and apply database migrations
     - **Files**:
@@ -84,7 +84,7 @@
 
 ## RAG System & Gemini Integration
 
-- [ ] Step 8: Set up Google Gemini client
+- [x] Step 8: Set up Google Gemini client
     
     - **Task**: Configure Google Gemini integration for the chatbot
     - **Files**:
@@ -110,7 +110,7 @@
 
 ## Shared Components
 
-- [ ] Step 11: Create layout components
+- [x] Step 11: Create layout components
     
     - **Task**: Implement shared layout components
     - **Files**:
@@ -150,7 +150,7 @@
         - `app/loading.tsx`: Loading state
     - **Step Dependencies**: Step 11
     - **User Instructions**: None
-- [ ] Step 15: Implement chat page UI structure
+- [x] Step 15: Implement chat page UI structure
     
     - **Task**: Create the structure for the chat interface page
     - **Files**:
@@ -158,7 +158,7 @@
         - `app/chat/loading.tsx`: Loading state for chat page
     - **Step Dependencies**: Steps 11, 12
     - **User Instructions**: None
-- [ ] Step 16: Implement research database page UI structure
+- [x] Step 16: Implement research database page UI structure
     
     - **Task**: Create the structure for the research database page
     - **Files**:
