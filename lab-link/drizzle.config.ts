@@ -1,5 +1,8 @@
 import { defineConfig } from "drizzle-kit";
-import "dotenv/config";
+import * as dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
   throw new Error("NEXT_PUBLIC_SUPABASE_URL is required");
