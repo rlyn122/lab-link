@@ -4,14 +4,6 @@ This directory contains utilities for managing data in the Lab Link application.
 
 ## Database Utilities
 
-### Generate Migration Files
-
-To generate migration files from schema changes:
-
-```bash
-npm run generate-migrations
-```
-
 ### Seed Database
 
 To seed the database with sample data:
