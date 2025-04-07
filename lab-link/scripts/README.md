@@ -4,16 +4,6 @@ This directory contains utilities for managing data in the Lab Link application.
 
 ## Database Utilities
 
-### Test Database Connection
-
-To test the database connection:
-
-```bash
-npm run db-test
-```
-
-This will check if your database connection is working properly and provide troubleshooting tips if it fails.
-
 ### Generate Migration Files
 
 To generate migration files from schema changes:
@@ -46,27 +36,30 @@ This will create a `sample-data` directory with:
 
 ### Import Data from CSV Files
 
-To import data from CSV files, you can use any of these formats:
+To import data from CSV files:
 
 ```bash
-# Format 1: key=value
+# Import only faculty data
 npm run import-data faculty=path/to/faculty.csv
-npm run import-data papers=path/to/papers.csv
-npm run import-data faculty=path/to/faculty.csv papers=path/to/papers.csv
 
+# Import only papers data
+npm run import-data papers=path/to/papers.csv
+
+# Import both
+npm run import-data faculty=path/to/faculty.csv papers=path/to/papers.csv
+```
+
+Alternative formats are also supported:
+
+```bash
 # Format 2: --key=value (with double dash separator)
 npm run import-data -- --faculty=path/to/faculty.csv
-npm run import-data -- --papers=path/to/papers.csv
 
 # Format 3: key value (with double dash separator)
 npm run import-data -- faculty path/to/faculty.csv
-npm run import-data -- papers path/to/papers.csv
 
 # Format 4: Short form options
 npm run import-data f=path/to/faculty.csv p=path/to/papers.csv
-
-# Database connection check only
-npm run import-data check-db
 ```
 
 ## CSV File Format Requirements
@@ -99,26 +92,12 @@ Papers CSV files should have the following headers:
 
 ## Troubleshooting
 
-### Database Connection Issues
-
 If you experience connection problems:
 
-1. Run the database test utility:
-   ```bash
-   npm run db-test
-   ```
-
-2. Check your `.env.local` file has the correct values:
+1. Check your `.env.local` file has the correct values:
    - `NEXT_PUBLIC_SUPABASE_URL` - Should be in format `https://[project-ref].supabase.co`
-   - `SUPABASE_SERVICE_ROLE_KEY` - Should be your service role API key
+   - `SUPABASE_SERVICE_ROLE_KEY` - Should be your service role API key (not the anon key)
 
-3. Verify your Supabase project:
+2. Verify your Supabase project:
    - Is the project active and not paused?
-   - Is your IP address allowed in the database settings?
-   - Are you using the correct credentials?
-
-4. Network issues:
-   - Check if port 5432 is blocked by your firewall
-   - Try a different network connection
-
-If problems persist, check the Supabase documentation for direct database connections. 
+   - Are you using the correct credentials? 
