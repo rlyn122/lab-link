@@ -3,12 +3,10 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
-// Load environment variables from .env.local file at the project root
-const currentDir = process.cwd();
-const projectRoot = path.resolve(currentDir);
-const envPath = path.join(projectRoot, '.env.local');
-
+// Load environment variables from .env.local
+const envPath = path.resolve(process.cwd(), '.env.local');
 dotenv.config({ path: envPath });
+
 
 // Now import the database modules after environment variables are loaded
 import { importAllData } from './import-csv';
