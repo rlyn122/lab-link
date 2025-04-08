@@ -1,40 +1,46 @@
-import { PageContainer } from "@/components/layout/page-container";
+'use client';
 
-export default function ChatPage() {
-  return (
-    <PageContainer className="flex flex-col h-full" maxWidth="narrow">
-      <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold tracking-tight">Lab Link Assistant</h1>
-        <p className="mt-2 text-muted-foreground">
-          Ask questions about research papers, faculty, and academic topics
-        </p>
-      </div>
+import * as React from 'react';
+import { MessageList } from '@/components/chat/message-list';
+import { ChatInput } from '@/components/chat/input';
+import { useState } from 'react';
+import { generateText } from '@/lib/gemini/client';
+
+export default function Home() {
+  const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSend = async (message: string) => {
+    setMessages([...messages, { role: 'user', content: message }]);
+    setIsLoading(true);
+    
+    try {
+      // TODO: Implement the actual chat response logic here
+      const response = await generateText(message);
       
-      <div className="flex-1 flex flex-col min-h-[60vh] rounded-lg border bg-card p-4 md:p-6">
-        {/* Chat messages will go here */}
-        <div className="flex-1 space-y-4 mb-4">
-          <div className="bg-muted p-4 rounded-lg">
-            <p className="text-sm font-medium">Lab Link AI</p>
-            <p className="mt-1">
-              Hello! I'm your research assistant. How can I help you today?
-            </p>
+      setMessages(prev => [...prev, { role: 'assistant', content: response as string }]);
+    } catch (error) {
+      console.error('Error getting response:', error);
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, there was an error processing your message.' }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col h-screen w-full pt-10 pl-20 pr-20 pb-2 bg-gray-200 border-2 border-solid">
+      <h1 className="text-4xl font-bold p-4 text-center bg-white">Lab Link Chat</h1>
+      <div className="flex-1 overflow-hidden bg-white">
+        <div className="h-full flex flex-col p-3 ml-20 mr-20">
+          <div className="flex-1 overflow-y-auto">
+            <MessageList messages={messages } isLoading={isLoading} />
           </div>
-        </div>
-        
-        {/* Chat input */}
-        <div className="flex items-center gap-2">
-          <div className="relative flex-1">
-            <input
-              type="text"
-              placeholder="Type your message..."
-              className="w-full rounded-md border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-offset-1"
-            />
+          <div className="sticky bottom-0    ">
+            <ChatInput onSend={handleSend} disabled={isLoading} />
           </div>
-          <button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-            Send
-          </button>
         </div>
       </div>
-    </PageContainer>
+    </div>
+
   );
-}
+} 

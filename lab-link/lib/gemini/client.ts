@@ -1,12 +1,18 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+import path from 'path';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env.local
+const envPath = path.resolve(process.cwd(), '.env.local');
+dotenv.config({ path: envPath });
 
 // Check for API key in environment
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error("Missing GEMINI_API_KEY environment variable");
+if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+  throw new Error("Missing NEXT_PUBLIC_GEMINI_API_KEY environment variable");
 }
 
 // Initialize the Google Generative AI client
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
 // Model configuration
 const MODEL_NAME = "gemini-1.5-pro";
