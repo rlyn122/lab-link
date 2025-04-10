@@ -88,10 +88,13 @@ export async function generateText(prompt: string, customConfig = {}) {
  * @returns The generated chat response
  */
 export async function generateChatResponse(
-  history: { role: "user" | "model"; text: string }[],
+  history: { role: "user" | "model"; text: string }[] | undefined,
   customConfig = {}
 ) {
   try {
+    if (!history) {
+      history = [];
+    }
     const model = getGeminiModel(customConfig);
     const chat = model.startChat({
       history: history.map(msg => ({

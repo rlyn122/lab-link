@@ -4,7 +4,7 @@ import * as React from 'react';
 import { MessageList } from '@/components/chat/message-list';
 import { ChatInput } from '@/components/chat/input';
 import { useState } from 'react';
-import { generateText } from '@/lib/gemini/client';
+import { processMessage } from '@/app/actions/chat';
 
 export default function Home() {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
@@ -16,7 +16,7 @@ export default function Home() {
     
     try {
       // TODO: Implement the actual chat response logic here
-      const response = await generateText(message);
+      const response = await processMessage(message, messages);
       
       setMessages(prev => [...prev, { role: 'assistant', content: response as string }]);
     } catch (error) {
