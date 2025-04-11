@@ -1,4 +1,0 @@
-Name,Affiliation,Homepage,Email_Domain,Scholar_ID,Interests,Citedby,Citedby5y,hindex,hindex5y,i10index,i10index5y
-"Dr. Jane Smith","Computer Science Department","https://cs.example.edu/~jsmith","cs.example.edu","jsmith123","Artificial Intelligence, Machine Learning, NLP","5000","3000","30","25","50","40"
-"Dr. John Doe","Computer Science Department","https://cs.example.edu/~jdoe","cs.example.edu","jdoe456","Computer Vision, Deep Learning, Robotics","7500","4000","35","28","60","45"
-"Dr. Emily Johnson","Electrical Engineering Department","https://ee.example.edu/~ejohnson","ee.example.edu","ejohnson789","Signal Processing, Communications, Information Theory","4200","2500","25","20","45","35"

@@ -1,6 +1,29 @@
 import { PageContainer } from "@/components/layout/page-container";
+import { FacultyCard } from "@/components/research/faculty-card";
+import { db } from "@/lib/db";
+import { faculty, papers } from "@/lib/db/schema";
+import type { Faculty, Paper } from "@/lib/db";
 
-export default function ResearchPage() {
+async function getFacultyWithPapers() {
+  const facultyList = await db.query.faculty.findMany({
+    with: {
+      papers: {
+        with: {
+          paper: true
+        }
+      }
+    }
+  });
+
+  return facultyList.map((f: Faculty & { papers: { paper: Paper }[] }) => ({
+    ...f,
+    papers: f.papers.map((p: { paper: Paper }) => p.paper)
+  }));
+}
+
+export default async function ResearchPage() {
+  const facultyList = await getFacultyWithPapers();
+
   return (
     <PageContainer>
       <div className="mb-8">
@@ -25,22 +48,9 @@ export default function ResearchPage() {
         </div>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Placeholder cards for research papers */}
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="rounded-lg border bg-card shadow-sm">
-            <div className="p-6">
-              <h3 className="text-lg font-semibold">Research Paper Title {i + 1}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <div className="mt-4 flex items-center text-sm">
-                <span className="text-muted-foreground">Author Name</span>
-                <span className="mx-2 text-muted-foreground">•</span>
-                <span className="text-muted-foreground">2023</span>
-              </div>
-            </div>
-          </div>
+      <div className="space-y-6">
+        {facultyList.map((faculty: Faculty & { papers: Paper[] }) => (
+          <FacultyCard key={faculty.id} faculty={faculty} />
         ))}
       </div>
     </PageContainer>

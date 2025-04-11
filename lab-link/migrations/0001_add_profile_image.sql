@@ -1,0 +1,1 @@
+ALTER TABLE "faculty" ADD COLUMN "url_picture" text; 

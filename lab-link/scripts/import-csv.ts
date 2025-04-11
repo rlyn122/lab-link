@@ -67,6 +67,7 @@ export async function importFacultyFromCsv(filepath: string) {
       hindex5y: record.hindex5y ? parseInt(record.hindex5y) : null,
       i10index: record.i10index ? parseInt(record.i10index) : null,
       i10index5y: record.i10index5y ? parseInt(record.i10index5y) : null,
+      url_picture: record.url_picture,
     }));
     
     const inserted = await db.insert(faculty).values(facultyData).returning();
