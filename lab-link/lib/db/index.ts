@@ -18,8 +18,8 @@ const client = postgres(connectionString, {
   max_lifetime: 60 * 30 // 30 minute connection lifetime
 });
 
-// Create a Drizzle client
-export const db = drizzle(client);
+// Create a Drizzle client with schema
+export const db = drizzle(client, { schema });
 
 // Export types for use in the application
 export type Faculty = typeof schema.faculty.$inferSelect;

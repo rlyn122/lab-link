@@ -22,6 +22,7 @@ export const faculty = pgTable("faculty", {
   emailDomain: varchar("email_domain", { length: 100 }),
   scholarId: varchar("scholar_id", { length: 50 }).unique(),
   interests: text("interests"),
+  url_picture: text("url_picture"),
   // Citation metrics
   citedby: integer("citedby"),
   citedby5y: integer("citedby5y"),

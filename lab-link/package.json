@@ -9,7 +9,8 @@
     "lint": "next lint",
     "seed": "tsx scripts/seed.ts",
     "generate-csv": "tsx scripts/generate-sample-csv.ts",
-    "import-data": "tsx scripts/import-data.ts"
+    "import-data": "tsx scripts/import-data.ts",
+    "clear-data": "tsx scripts/clear-data.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
