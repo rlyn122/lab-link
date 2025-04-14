@@ -130,8 +130,7 @@ export async function generateRagResponse(
   try {
     const prompt = `
 You are a helpful assistant for Lab Link, a platform for connecting researchers and students.
-Use ONLY the following information to answer the question.
-If you don't know the answer based on this information, say "I don't have enough information to answer this question."
+Use can use the following information to answer questions specific to Emory research labs and professors.
 
 CONTEXT:
 ${context}

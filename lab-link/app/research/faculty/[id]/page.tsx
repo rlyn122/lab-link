@@ -13,6 +13,9 @@ interface FacultyPageProps {
 }
 
 export default async function FacultyPage({ params }: FacultyPageProps) {
+
+  await params;
+
   if (!params?.id) {
     notFound();
   }

@@ -11,11 +11,11 @@ export async function processMessage(message: string, chatHistory: any[]) {
     
     const context = await buildPromptContext(message, chatHistory);
     const prompt = createResearchChatPrompt(message, context);
-    const response = await generateText(prompt);
+    // const response = await generateText(prompt);
 
 
-    console.log(response)
-
+    // console.log(response)
+    const response = "test"
     return response
 }
 

@@ -65,7 +65,7 @@
     - **User Instructions**:
         1. Run `npx drizzle-kit generate:pg` to generate migrations
         2. Apply migrations manually in Supabase SQL editor or set up a script
-- [ ] Step 6: Create data import utilities
+- [X] Step 6: Create data import utilities
     
     - **Task**: Develop utilities to import scraped faculty and research data
     - **Files**:
@@ -73,7 +73,7 @@
         - `scripts/import-data.ts`: Script to import data
     - **Step Dependencies**: Steps 4, 5
     - **User Instructions**: None
-- [ ] Step 7: Implement Supabase API client
+- [X] Step 7: Implement Supabase API client
     
     - **Task**: Create utility functions for interacting with Supabase
     - **Files**:
