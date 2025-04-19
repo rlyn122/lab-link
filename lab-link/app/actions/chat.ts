@@ -9,9 +9,9 @@ import { createResearchChatPrompt } from '@/lib/rag/prompt-templates';
 export async function processMessage(message: string, chatHistory: any[]) {
 
     
-    const context = await buildPromptContext(message, chatHistory);
-    const prompt = createResearchChatPrompt(message, context);
-    const response = await generateText(prompt);
+    //const context = await buildPromptContext(message, chatHistory);
+    //const prompt = createResearchChatPrompt(message, context);
+    const response = await generateText(message);
 
 
     console.log(response)

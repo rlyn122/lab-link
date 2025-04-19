@@ -15,7 +15,7 @@ if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
 // Model configuration
-const MODEL_NAME = "gemini-1.5-pro";
+const MODEL_NAME = "gemini-2.0-flash";
 
 // Default safety settings for content generation
 const defaultSafetySettings = [

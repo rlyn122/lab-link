@@ -4,66 +4,30 @@ import {faculty,papers} from '@/lib/db/schema';
 export async function generateSQL(userQuery: string) {
 
   const schema = `
-
-
   DATABASE SCHEMA: 
   
-  Table: public.faculty
-  - id: serial (primary key)
-  - name: varchar(255) NOT NULL
-  - affiliation: varchar(255)
-  - homepage: text
-  - email_domain: varchar(100)
-  - scholar_id: varchar(50) UNIQUE
-  - interests: text
-  - citedby: integer
-  - citedby5y: integer
+  Table: public.publications
+  - index: integer (primary key)
+  - Author: text
+  - Title: text
+  - Year: integer
+  - URL: text
+  - Abstract: text
+  - Affiliation: text
+  - Homepage: text
+  - Email_Domain: text
+  - Scholar_ID: text
+  - Interests: text
+  - Citedby: integer
+  - Citedby5y: integer
   - hindex: integer
   - hindex5y: integer
   - i10index: integer
   - i10index5y: integer
-  - created_at: timestamp
-  - updated_at: timestamp
-  
-  Table: public.papers
-  - id: serial (primary key)
-  - title: varchar(500) NOT NULL
-  - year: integer
-  - url: text
-  - abstract: text
-  - created_at: timestamp
-  - updated_at: timestamp
-  
-  Table: public.paper_authors (junction table)
-  - paper_id: integer NOT NULL (foreign key to papers.id)
-  - faculty_id: integer NOT NULL (foreign key to faculty.id)
-  - Primary key: (paper_id, faculty_id)
-  
-  Table: public.research_areas
-  - id: serial (primary key)
-  - name: varchar(100) NOT NULL UNIQUE
-  - description: text
-  
-  Table: public.paper_research_areas (junction table)
-  - paper_id: integer NOT NULL (foreign key to papers.id)
-  - area_id: integer NOT NULL (foreign key to research_areas.id)
-  - Primary key: (paper_id, area_id)
-  
-  RELATIONSHIPS:
-  - A faculty member can author multiple papers (through paper_authors)
-  - A paper can have multiple faculty authors (through paper_authors)
-  - A paper can belong to multiple research areas (through paper_research_areas)
-  - A research area can contain multiple papers (through paper_research_areas)
-  
-  COMMON JOIN PATTERNS:
-  - To get papers with their authors: join papers with paper_authors and faculty
-  - To get papers by research area: join papers with paper_research_areas and research_areas
-  - To get faculty with their research papers: join faculty with paper_authors and papers
   `;
 
   const prompt = `
-  You are an SQL query generator. Given a description of what information a user wants, 
-  generate a valid PostgreSQL query that will retrieve this information. 
+  You are a highly accurate text-to-SQL generator agent. Your job is to convert natural language questions into PostgreSQL queries based on the schema of the databasae provided below:
   
   DATABASE SCHEMA:
   ${schema}
@@ -71,11 +35,30 @@ export async function generateSQL(userQuery: string) {
   USER REQUEST:
   ${userQuery}
   
-  Generate only the SQL query without any explanations or markdown formatting. The query should be valid PostgreSQL syntax.
+  Instructions:
+  - Return only the SQL query and nothing else
+  - Do not include explanations or comments in the SQL query
+  - Use public.publication at the fully qualified table name
+  - Use ILIKE for case-insensitive matching
+  - Enclose string literals in single quotes
+  - Try to use SELECT * as little as possible, try to specify only the needed columns
+  - Use LIMIT clauses when the query asks for a fixed number of results (like 'top 5')
+  - Use ORDER BY to sort the results appropriatelyfor ranking metrics like Citedby, hindex, etc.
+
+  Here are some examples of questions that we expect:
+  Question: 'Who are the top 5 most cited authors in the database?'
+  Query: SELECT Author, Citedby \n FROM public.publications \n ORDER BY Citedby DESC \n LIMIT 5;
+
+  Question: 'List publications from 2023 about machine learning.'
+  Query: SELECT Title, Author, Year \n FROM public.publications \n WHERE Year = 2023 AND Interests ILIKE '%machine learning%';
+
+  Question: 'Can you summarize the research done by Professor John Doe in the year 2024?'
+  Query: SELECT Title, Abstract, Year, Author \n FROM public.publications \n WHERE Author ILIKE '%John Doe%' AND Year = 2024;
+
+  Question: 'I am interested in natural language processing and machine learning. Can you show me some publications that match both of these interests?'
+  Query: SELECT Title, Author, Year, Abstract \n FROM public.publications \n WHERE Interests ILIKE '%natural language processing%' OR Interests ILIKE '%machine learning%' \n
     `;
   
-
   const response = await generateText(prompt);
   return response;
-  
 }
